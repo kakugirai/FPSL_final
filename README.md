@@ -1,15 +1,9 @@
 # FUNDAMENTALS OF PROGRAMMING WITH SCRIPT LANGUAGES FINAL PROJECT
-## Intro
-This project aims to build a api for [SFC Course Summary](http://vu.sfc.keio.ac.jp/course_u/data/2016/title14_en.html).
+## Introduction
+This project aims to build an api for [SFC Course Summary](http://vu.sfc.keio.ac.jp/course_u/data/2016/title14_en.html).
 Several useful functions like downloading, parsing HTML and courses searching are provided.
 
-## My Python environment
-```sh
-$ python -V
-Python 2.7.11 :: Anaconda 4.0.0 (x86_64)
-```
-
-## Install
+## Installation
 ### My Python environment
 ```sh
 $ python -V
@@ -20,7 +14,7 @@ Python 2.7.11 :: Anaconda 4.0.0 (x86_64)
 $ make
 ```
 
-## Example!
+## Example
 ```sh
 $ python final.py --search ucu
 +---------------+---------------------------------------------------+
