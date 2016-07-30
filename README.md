@@ -1,4 +1,4 @@
-# FUNDAMENTALS OF PROGRAMMING WITH SCRIPT LANGUAGES FINAL PROJECT
+# sfc-courses-api
 ## Introduction
 This project aims to build an api for [SFC Course Summary](http://vu.sfc.keio.ac.jp/course_u/data/2016/title14_en.html).
 Several useful functions like downloading, parsing HTML and courses searching are provided.
