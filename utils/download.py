@@ -18,4 +18,3 @@ def download(url_list):
 if __name__ == "__main__":
     test = ["http://www.sfc.wide.ad.jp/IRL/members.html"]
     download(test)
-

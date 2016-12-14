@@ -1,13 +1,12 @@
 #/usr/bin/env python
 # -*- coding: utf-8 -*-
-import json
 import re
 from bs4 import BeautifulSoup
 
 def html2json(html):
     """
-    summary = [course_number, course_name, half_or_full_semester, season_of_course, GIGA_or_not,
-        course_period, course_language]
+    summary = [course_number, course_name, half_or_full_semester,
+    season_of_course, GIGA_or_not, course_period, course_language]
     """
     html_doc = html.read()
     soup = BeautifulSoup(html_doc, 'lxml')
@@ -55,30 +54,36 @@ def html2json(html):
 
     # faculty_in_charge
     teacher_list = []
-    for faculty_in_charge in soup.find_all(attrs={"class": "tag"}, text=re.compile(r'Faculty-in-charge')):
+    for faculty_in_charge in soup.find_all(attrs={"class": "tag"},
+                                           text=re.compile(r'Faculty-in-charge')):
         for teacher in faculty_in_charge.next_siblings:
             teacher_list.append(teacher.get_text().split(u"・")[0])
     # print teacher_list
 
     # Semester, Day and Period
     period_info_list = []
-    for period in soup.find_all(attrs={"class": "tag"}, text=re.compile(r'Semester, Day and Period')):
+    for period in soup.find_all(attrs={"class": "tag"},
+                                text=re.compile(r'Semester, Day and Period')):
         for period_info in period.next_siblings:
-            time_list = (", ".join(period_info.get_text().split(","))).replace("\n", "")
+            time_list = (", ".join(
+                period_info.get_text().split(","))).replace("\n", "")
             period_info_list.append(time_list)
 
     # Language used in the class
     language_info_list = []
-    for language in soup.find_all(attrs={"class": "tag"}, text=re.compile(r'Language used in the class')):
+    for language in soup.find_all(attrs={"class": "tag"},
+                                  text=re.compile(r'Language used in the class')):
         for language_info in language.next_siblings:
             if u"English" in language_info.get_text():
                 language_info_list.append("English")
             else:
                 language_info_list.append("Japanese")
 
-    summary = zip(course_title_number_list, course_name_info_list, teacher_list, half_verified_list, season_list, giga_verified_list, period_info_list, language_info_list)
+    summary = zip(course_title_number_list, course_name_info_list, teacher_list,
+                  half_verified_list, season_list, giga_verified_list,
+                  period_info_list, language_info_list)
     return summary
 
 if __name__ == "__main__":
-    with open("test.html", "r") as html:
-        html2json(html)
+    with open("test.html", "r") as test:
+        html2json(test)
